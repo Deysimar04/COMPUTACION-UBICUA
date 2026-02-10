@@ -3,9 +3,6 @@
 ## Simulación
 [Ver simulación en Tinkercad](https://www.tinkercad.com/things/2ACBBnwg4Yi-laboratorio-2)
 
-## Archivos
-- [pulModificado_feb6a.ino](pulModificado_feb6a.ino)
-- [pulsadorsinmodif.ino](pulsadorsinmodif.ino)
   
  ## Evidencia del circuito
 
