@@ -4,8 +4,8 @@ void setup() {
 
 void loop() {
   digitalWrite(13, HIGH); // pin 13 a nivel alto (LED encendido)
-  delay(2000);            // demora de 1.2 segundos
+  delay(1200);            // demora de 1.2 segundos
 
   digitalWrite(13, LOW);  // pin 13 a nivel bajo (LED apagado)
-  delay(2000);            // demora de 1.2 segundos
+  delay(1200);            // demora de 1.2 segundos
 }
