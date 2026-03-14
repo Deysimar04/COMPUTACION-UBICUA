@@ -1,4 +1,3 @@
-
 // Librería para usar el sensor DHT11
 #include <Bonezegei_DHT11.h>
 
@@ -8,7 +7,7 @@
 // Librería LCD
 #include <LiquidCrystal_I2C.h>
 
-// Sensor DHT11 en pin 8
+// Sensor DHT11 en pin 8 (aunque no usaremos humedad)
 Bonezegei_DHT11 dht(8);
 
 // LCD
@@ -33,38 +32,27 @@ void setup() {
 
 void loop() {
 
-  // -------- LM35 (Temperatura principal) --------
-  
+  // Leer temperatura del LM35
   int valor = analogRead(pinLM35);
+
   float voltaje = valor * (5.0 / 1023.0);
+
   float temperatura = voltaje * 100;
 
-  // -------- DHT11 (solo humedad) --------
-  
-  if(dht.getData()){
+  // Mostrar en monitor serial
+  Serial.print("Temperatura LM35: ");
+  Serial.print(temperatura);
+  Serial.println(" C");
 
-    int humedad = dht.getHumidity();
+  // Mostrar en LCD
+  lcd.clear();
 
-    Serial.print("Temp LM35: ");
-    Serial.print(temperatura);
-    Serial.print(" C  Hum: ");
-    Serial.print(humedad);
-    Serial.println(" %");
+  lcd.setCursor(0,0);
+  lcd.print("Temperatura LM35:");
 
-    // -------- LCD --------
-
-    lcd.clear();
-
-    lcd.setCursor(0,0);
-    lcd.print("Temp: ");
-    lcd.print(temperatura);
-    lcd.print(" C");
-
-    lcd.setCursor(0,1);
-    lcd.print("Hum: ");
-    lcd.print(humedad);
-    lcd.print(" %");
-  }
+  lcd.setCursor(0,1);
+  lcd.print(temperatura);
+  lcd.print(" C");
 
   delay(2000);
 }
