@@ -1,19 +1,19 @@
-// Librería para usar el sensor DHT11
+// Librería DHT11
 #include <Bonezegei_DHT11.h>
 
-// Librería I2C
+// I2C
 #include <Wire.h>
 
-// Librería LCD
+// LCD
 #include <LiquidCrystal_I2C.h>
 
-// Sensor DHT11 en pin 8 (aunque no usaremos humedad)
+// DHT11 en pin 8
 Bonezegei_DHT11 dht(8);
 
 // LCD
 LiquidCrystal_I2C lcd(0x27,16,2);
 
-// Pin del LM35
+// LM35
 int pinLM35 = A0;
 
 void setup() {
@@ -24,35 +24,65 @@ void setup() {
   lcd.backlight();
 
   lcd.setCursor(0,0);
-  lcd.print("Hola profe");
-
+  lcd.print("hola profe");
   delay(2000);
   lcd.clear();
 }
 
 void loop() {
 
-  // Leer temperatura del LM35
+  // ===== LM35 =====
   int valor = analogRead(pinLM35);
-
   float voltaje = valor * (5.0 / 1023.0);
+  float tempLM35 = voltaje * 100;
 
-  float temperatura = voltaje * 100;
+  // ===== DHT11 =====
+  float tempDHT = 0;
+  float humedad = 0;
 
-  // Mostrar en monitor serial
-  Serial.print("Temperatura LM35: ");
-  Serial.print(temperatura);
-  Serial.println(" C");
+  if (dht.getData()) {  
+    tempDHT = dht.getTemperature();
+    humedad = dht.getHumidity();
+  } else {
+    tempDHT = -99;
+    humedad = -1;
+  }
 
-  // Mostrar en LCD
+  // ===== SERIAL =====
+  Serial.print("LM35: ");
+  Serial.print(tempLM35);
+  Serial.print(" C | DHT11: ");
+
+  if (tempDHT != -99) {
+    Serial.print(tempDHT);
+    Serial.print(" C | Humedad: ");
+    Serial.print(humedad);
+    Serial.print(" %");
+  } else {
+    Serial.print("Error");
+  }
+  Serial.println();
+
+  // ===== LCD =====
   lcd.clear();
 
+  // Línea 1 → DHT11
   lcd.setCursor(0,0);
-  lcd.print("Temperatura LM35:");
+  if (tempDHT != -99) {
+    lcd.print("T:");
+    lcd.print(tempDHT);
+    lcd.print("C H:");
+    lcd.print(humedad);
+    lcd.print("%");
+  } else {
+    lcd.print("Error DHT11");
+  }
 
+  // Línea 2 → LM35
   lcd.setCursor(0,1);
-  lcd.print(temperatura);
-  lcd.print(" C");
+  lcd.print("LM35:");
+  lcd.print(tempLM35);
+  lcd.print("C");
 
   delay(2000);
 }
