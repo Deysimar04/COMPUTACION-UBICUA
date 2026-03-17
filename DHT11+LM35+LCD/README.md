@@ -1,1 +1,1 @@
-
+[ver simulacion](https://wokwi.com/projects/458768705024606209)
