@@ -1,2 +1,25 @@
 
 https://wokwi.com/projects/458118349493404673
+
+Documentación del código – Sensor DHT11
+¿Qué hace el programa?
+
+Este código mide la humedad y la temperatura usando un sensor DHT11 y muestra los datos en el monitor serial.
+
+Componentes
+Arduino
+Sensor DHT11 (pin digital 2)
+Funcionamiento
+1. Inicialización
+Se inicia la comunicación serial.
+Se activa el sensor DHT11.
+2. Lectura de datos
+Cada 2 segundos se leen:
+Humedad (%)
+Temperatura (°C)
+3. Validación
+Si el sensor falla (datos inválidos), muestra un mensaje de error.
+4. Salida
+En el monitor serial se imprime:
+Humedad
+Temperatura
