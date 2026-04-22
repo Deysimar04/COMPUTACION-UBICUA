@@ -1,1 +1,20 @@
 
+
+Documentación del código – Medición de temperatura con promedio
+¿Qué hace el programa?
+
+Este código mide la temperatura usando un sensor analógico (como LM35) y calcula el promedio de 5 lecturas para obtener un valor más estable.
+
+Funcionamiento
+1. Lectura del sensor
+Se lee el valor analógico del pin A0.
+Se convierte a temperatura en grados Celsius usando la fórmula:
+Voltaje → (SENSOR * 5000 / 1023)
+Temperatura → voltaje / 10
+2. Promedio de datos
+Se toman 5 lecturas.
+Cada lectura se suma en la variable SUMA.
+Se hace una pausa de 500 ms entre lecturas.
+3. Resultado final
+Se calcula el promedio: SUMA / 5
+Se muestra en el monitor serial con 1 decimal.
