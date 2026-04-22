@@ -1,2 +1,25 @@
 laboratorio 4 parte 2
 https://www.tinkercad.com/things/hpkBDJuXUOt-laboratorio-5-parte-2?sharecode=MhpaULskAmNoc6wuBulSB4sd0H_VeooXf7D9EPjM4D8
+
+
+Documentación del código – Promedio de temperatura en LCD
+¿Qué hace el programa?
+
+Este código mide la temperatura con un sensor analógico (LM35), calcula el promedio de 5 lecturas y muestra el resultado en una pantalla LCD 16x2.
+
+Componentes
+Arduino
+Sensor LM35 (A0)
+Pantalla LCD 16x2 (pines digitales 7, 6, 5, 4, 3, 2)
+Funcionamiento
+1. Lectura del sensor
+Se lee el valor analógico del pin A0.
+Se convierte a temperatura en grados Celsius.
+2. Promedio
+Se toman 5 lecturas.
+Se suman y luego se dividen entre 5 para obtener un valor más estable.
+Hay un retraso de 500 ms entre cada lectura.
+3. Visualización
+En la LCD se muestra:
+“Temp: XX.X C”
+El valor tiene 1 decimal.
