@@ -1,11 +1,21 @@
+Codigo lab 1
+
+// C++ code
+//
+
 void setup() {
-  pinMode(13, OUTPUT);   // pin 13 como salida
+  
+  pinMode (13, OUTPUT) ; // Configura el pin 13 como salida
+
 }
 
 void loop() {
-  digitalWrite(13, HIGH); // pin 13 a nivel alto (LED encendido)
-  delay(1200);            // demora de 1.2 segundos
-
-  digitalWrite(13, LOW);  // pin 13 a nivel bajo (LED apagado)
-  delay(1200);            // demora de 1.2 segundos
+  
+  digitalWrite (13, HIGH); // Enciende el LED
+  
+  delay(1000);  // Espera 1 segundo
+  
+  digitalWrite (13, LOW); // Apaga el LED
+  
+  delay(1000);  // Espera 1 segundo
 }
