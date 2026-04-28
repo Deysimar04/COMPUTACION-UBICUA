@@ -21,3 +21,28 @@ void loop () {
   }
 
 }
+
+
+Documentación breve – Sensor IR en Arduino
+🔹 Descripción
+
+Programa en Arduino que lee un sensor infrarrojo (IR) en el pin 2 y muestra en el monitor serial si detecta una línea.
+
+🔹 Funcionamiento
+Lee el sensor con digitalRead().
+Compara el valor actual con el anterior.
+Solo actúa cuando hay cambio:
+HIGH → imprime "Linea"
+LOW → imprime "Fuera"
+Actualiza el estado anterior.
+Espera 500 ms.
+🔹 Lógica
+
+Usa detección de cambios de estado para evitar imprimir datos repetidos.
+
+🔹 Entrada / Salida
+Entrada: Sensor IR (pin 2)
+Salida: Monitor serial (Linea / Fuera)
+🔹 Uso
+
+Ideal para robots seguidores de línea o sistemas de detección simple.
